@@ -2,7 +2,6 @@ import math
 import requests
 import threading
 import logging
-from app.copy_trade_backend.ct_bybit import BybitClient
 import time
 from pybit.unified_trading import HTTP
 import pandas as pd
@@ -13,7 +12,6 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
 logger = logging.getLogger(__name__)
-
 
 class ctGlobal:
     def __init__(self):
@@ -133,16 +131,6 @@ class ctGlobal:
                     else:
                         all_positions = user["traders"][uid]["positions"]
                         # bla bla bla: closing position
-                        client = BybitClient(
-                            chat_id,
-                            user["uname"],
-                            user["safety_ratio"],
-                            user["api_key"],
-                            user["api_secret"],
-                            user["slippage"],
-                            self,
-                            userdb,
-                        )
                         txtype, txsymbol, txsize, execprice, isClosedAll = (
                             [],
                             [],
@@ -175,16 +163,7 @@ class ctGlobal:
                         prop = user["traders"][uid]["proportion"]
                         for key in prop:
                             prop[key] = 1
-                        client.open_trade(
-                            txs,
-                            uid,
-                            prop,
-                            user["leverage"],
-                            user["traders"][uid]["tmode"],
-                            user["traders"][uid]["positions"],
-                            user["slippage"],
-                            True,
-                        )
+                        # Open trade functionality
                         del user["traders"][uid]
                         userdb.update_user(chat_id, user)
                         userdb.insert_command(

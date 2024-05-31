@@ -310,32 +310,32 @@ class WebScraping(threading.Thread):
                             }
                         )
                         retries = 0
-                        while retries < 3:
-                            try:
-                                client = BybitClient(
-                                    users["chat_id"],
-                                    users["uname"],
-                                    users["safety_ratio"],
-                                    users["api_key"],
-                                    users["api_secret"],
-                                    users["slippage"],
-                                    self.globals,
-                                    self.userdb,
-                                )
-                                client.open_trade(
-                                    txlist,
-                                    uid,
-                                    users["traders"][uid]["proportion"],
-                                    users["leverage"],
-                                    users["traders"][uid]["tmode"],
-                                    users["traders"][uid]["positions"],
-                                    users["slippage"],
-                                )
-                                del client
-                                break
-                            except Exception as e:
-                                retries += 1
-                                logger.error(str(e))
+                        # while retries < 3:
+                            # try:
+                            #     client = BybitClient(
+                            #         users["chat_id"],
+                            #         users["uname"],
+                            #         users["safety_ratio"],
+                            #         users["api_key"],
+                            #         users["api_secret"],
+                            #         users["slippage"],
+                            #         self.globals,
+                            #         self.userdb,
+                            #     )
+                            #     client.open_trade(
+                            #         txlist,
+                            #         uid,
+                            #         users["traders"][uid]["proportion"],
+                            #         users["leverage"],
+                            #         users["traders"][uid]["tmode"],
+                            #         users["traders"][uid]["positions"],
+                            #         users["slippage"],
+                            #     )
+                            #     del client
+                            #     break
+                            # except Exception as e:
+                            #     retries += 1
+                            #     logger.error(str(e))
                 self.userdb.save_position(uid, "x", True)
             elif self.num_no_data[uid] >= 3:
                 self.userdb.save_position(uid, "x", False)
@@ -451,32 +451,32 @@ class WebScraping(threading.Thread):
                             }
                         )
                         retries = 0
-                        while retries < 3:
-                            try:
-                                client = BybitClient(
-                                    users["chat_id"],
-                                    users["uname"],
-                                    users["safety_ratio"],
-                                    users["api_key"],
-                                    users["api_secret"],
-                                    users["slippage"],
-                                    self.globals,
-                                    self.userdb,
-                                )
-                                client.open_trade(
-                                    txlist,
-                                    uid,
-                                    users["traders"][uid]["proportion"],
-                                    users["leverage"],
-                                    users["traders"][uid]["tmode"],
-                                    users["traders"][uid]["positions"],
-                                    users["slippage"],
-                                )
-                                del client
-                                break
-                            except Exception as e:
-                                retries += 1
-                                logger.error(str(e))
+                        # while retries < 3:
+                        #     try:
+                        #         client = BybitClient(
+                        #             users["chat_id"],
+                        #             users["uname"],
+                        #             users["safety_ratio"],
+                        #             users["api_key"],
+                        #             users["api_secret"],
+                        #             users["slippage"],
+                        #             self.globals,
+                        #             self.userdb,
+                        #         )
+                        #         client.open_trade(
+                        #             txlist,
+                        #             uid,
+                        #             users["traders"][uid]["proportion"],
+                        #             users["leverage"],
+                        #             users["traders"][uid]["tmode"],
+                        #             users["traders"][uid]["positions"],
+                        #             users["slippage"],
+                        #         )
+                        #         del client
+                        #         break
+                        #     except Exception as e:
+                        #         retries += 1
+                        #         logger.error(str(e))
                 self.userdb.save_position(uid, output["data"].to_json(), True)
             else:
                 self.userdb.save_position(uid, output["data"].to_json(), False)
