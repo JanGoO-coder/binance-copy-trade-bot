@@ -6,7 +6,7 @@ db_user = "mrasadalibhutta"
 db_pw = "jrLGa7pCuanSF2oz"
 admin_chatid = []
 
-discord_webhook = ""
+discord_webhook = "https://discord.com/api/webhooks/1246126446888484895/WtFEqvNdLMaGV9VRyQUTpA-GuIblI0xouW9qVcjdYFsBq5supSfQtGuA0ppMLbEJjp_p"
 headers = {
     "User-Agent": "",
     "Device-info": "",
